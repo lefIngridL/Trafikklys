@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    
+<body>
+    <div id="app">
+        <div class="box">
+           <div id="red" class="circle" ></div>
+            <div id="yellow" class="circle"></div>
+            <div id="green" class="circle"></div> 
+        </div> 
+        <div class="controls">
+            <button onclick="lightColor('red')">red</button>
+            <button onclick="lightColor('yellow')">yellow</button>
+            <button onclick="lightColor('green')">green</button>
+            <br>
+            <br>
+            <button onclick="myStopFunction()">STOP!</button>
+        </div>
+    
+</div>
+   
+    <script >
+
+        let myTimeout;
+        let myTimeout2;
+        let myTimeout3;
+        let myTimeout4;
+        let myTimeout5;
+        let color; 
+        let light
+
+        function lightColor(light) {
+            light = document.getElementById(light);
+            console.log(light);
+            color = light.id;
+            light.classList.toggle(color);
+            myTimeout = setTimeout(lightChange, 1000, color);
+        }
+
+    function lightChange(color) {
+        console.log(color);
+        if (color == 'red') {
+            document.getElementById(color).classList.toggle(color);
+            document.getElementById('yellow').classList.toggle('yellow');
+            color= 'yellow';
+            myTimeout2 = setTimeout(lightChange2, 1000, color);
+            return color;
+        }
+       
+        
+    }
+    
+    
+    function lightChange2(color) {
+        console.log(color);
+        if (color == 'yellow') {
+            document.getElementById(color).classList.toggle(color);
+            document.getElementById('green').classList.toggle('green');
+            color= 'green';
+            myTimeout3 = setTimeout(lightChange3, 1000, color);
+            console.log(color);
+            return color;
+
+        }
+    }
+    
+    function lightChange3(color) {
+        console.log(color);
+        if (color == 'green') {
+            document.getElementById(color).classList.toggle(color);
+            document.getElementById('yellow').classList.toggle('yellow');
+            color='yellow';
+            myTimeout4 = setTimeout(lightChange4, 1000, color);
+            console.log(color);
+            return color;
+
+        }
+    }
+
+    function lightChange4(color) {
+        console.log(color);
+        if (color == 'yellow') {
+            document.getElementById(color).classList.toggle(color);
+            document.getElementById('red').classList.toggle('red');
+            color='red';
+            myTimeout5 = setTimeout(lightChange, 1000, color);
+            console.log(color);
+            return color;
+
+        }
+    }
+
+
+    
+     
+
+    function myStopFunction() {
+        clearTimeout(myTimeout);
+        clearTimeout(myTimeout2);
+        clearTimeout(myTimeout3);
+        clearTimeout(myTimeout4);
+        clearTimeout(myTimeout5);
+    }
+
+
+        
+    </script>
+</body>
+</html>
+
+<!--Oppgave - Trafikklys
+Denne oppgaven løser du med: Funksjoner, Parameter, 
+Onclick og evt setTimeout().
+
+I denne oppgaven skal du lage et trafikklys som bytter fra 
+rødt - til rødt og gult og så til grønt ved hjelp av knapper 
+som bytter hvilke sirkler som har farge - og hvilke farge den 
+har.
+
+1. Lag tre sirkler under hverandre, som skal kunne ha en 
+bakgrunnsfarge. Det øverste kan bli rødt, det i midten kan 
+bli gult/oransje og det nederste grønt.
+
+2. Lag 3 knapper - en før rødt lys, en for rødt og gult og en 
+for grønt lys.
+
+3. Bruk funksjon med parameter, CSS klasser og onclick for 
+å få knappene til å endre lysene.
+
+4. Når du har fått til dette kan du utfordre deg selv og 
+forsøke å finne ut hvordan man kan automatisere trafikklyset 
+ved hjelp av setTimeout()
+
+Løsningsforslag: https://github.com/GetAcademy/Modul1_oppgaver_og_loesningsforslag/blob/main/Funksjon_med_parameter_og_onclick(setTimeout)-Trafikklys/Loesningsforslag_Trafikklys.html -->
