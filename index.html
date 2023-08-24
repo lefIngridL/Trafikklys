@@ -33,68 +33,106 @@
         let myTimeout4;
         let myTimeout5;
         let color; 
-        let light
+        let light;
+        const direction= {
+            x: "down",
+
+        };
 
         function lightColor(light) {
             light = document.getElementById(light);
             console.log(light);
             color = light.id;
             light.classList.toggle(color);
-            myTimeout = setTimeout(lightChange, 1000, color);
+            console.log(color);    
+            console.log(color, direction.x);
+            myTimeout = setTimeout(controlRoom, 1000, color, direction);
+            
+            
+            
+            
         }
 
-    function lightChange(color) {
-        console.log(color);
-        if (color == 'red') {
-            document.getElementById(color).classList.toggle(color);
-            document.getElementById('yellow').classList.toggle('yellow');
-            color= 'yellow';
-            myTimeout2 = setTimeout(lightChange2, 1000, color);
-            return color;
-        }
-       
+
+function controlRoom(color, direction) {
+    console.log(color, direction.x);
+    if (color=='red' && direction.x=='down') {
+        //alert('red down');
+        console.log(color, direction.x)
+        myTimeout = setTimeout(lightChange, 2000, color, direction);
         
     }
-    
-    
-    function lightChange2(color) {
-        console.log(color);
-        if (color == 'yellow') {
-            document.getElementById(color).classList.toggle(color);
-            document.getElementById('green').classList.toggle('green');
-            color= 'green';
-            myTimeout3 = setTimeout(lightChange3, 1000, color);
-            console.log(color);
-            return color;
+     
+        else if (color == 'yellow' && direction.x=='down') {
+            //alert('yellow down');
+            console.log(color, direction.x);
+            myTimeout2 = setTimeout(lightChange2, 1000, color, direction);
+            
 
-        }
     }
-    
-    function lightChange3(color) {
-        console.log(color);
-        if (color == 'green') {
-            document.getElementById(color).classList.toggle(color);
-            document.getElementById('yellow').classList.toggle('yellow');
-            color='yellow';
-            myTimeout4 = setTimeout(lightChange4, 1000, color);
-            console.log(color);
-            return color;
+            else if (color == 'green' && direction.x=='down') {
+                //alert('green down');
+                console.log(color, direction.x);
+                myTimeout3 = setTimeout(lightChange3, 2000, color, direction);
+                
+                
 
-        }
+    }
+                else if (color=='yellow' && direction=='up') {
+                    alert('yellow up');
+                    console.log(color, direction.x);
+                    myTimeout4=setTimeout(lightChange4, 1000, color, direction);
     }
 
-    function lightChange4(color) {
-        console.log(color);
-        if (color == 'yellow') {
-            document.getElementById(color).classList.toggle(color);
-            document.getElementById('red').classList.toggle('red');
-            color='red';
-            myTimeout5 = setTimeout(lightChange, 1000, color);
-            console.log(color);
-            return color;
+}
+    
+    
+function lightChange(color, direction) {
+    //alert('lightChange');
+    document.getElementById(color).classList.toggle(color);
+    document.getElementById('yellow').classList.toggle('yellow');
+    color= 'yellow';
+    console.log(color, direction.x);
+    myTimeout2 = setTimeout(lightChange2, 1000, color, direction);
+    return color, direction.x;
+}
 
-        }
-    }
+function lightChange2(color, direction) {
+    //alert('lightChange2');
+    document.getElementById(color).classList.toggle(color);
+    document.getElementById('green').classList.toggle('green');
+    color= 'green';
+    myTimeout3 = setTimeout(lightChange3, 2000, color, direction);
+    console.log(color, direction.x);
+    return color, direction.x;
+}
+
+function lightChange3(color, direction) {
+    //alert('lightChange3');
+    document.getElementById(color).classList.toggle(color);
+    document.getElementById('yellow').classList.toggle('yellow');
+    color='yellow';              
+    direction.x = 'up';
+    myTimeout4 = setTimeout(lightChange4, 1000, color, direction);
+    console.log(color, direction.x);
+    return color, direction.x;
+}
+
+function lightChange4(color, direction) {
+    //alert('lightChange4');
+    document.getElementById(color).classList.toggle(color);
+    document.getElementById('red').classList.toggle('red');
+    color='red';
+    direction.x='down';
+    myTimeout5 = setTimeout(lightChange, 2000, color, direction);
+    console.log(color, direction.x);
+    return color, direction.x;
+}    
+    
+    
+    
+
+    
 
 
     
@@ -106,6 +144,7 @@
         clearTimeout(myTimeout3);
         clearTimeout(myTimeout4);
         clearTimeout(myTimeout5);
+        
     }
 
 
